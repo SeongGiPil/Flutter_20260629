@@ -16,32 +16,14 @@ class _MyAppState extends State<MyApp> {
   
   List<Widget> list = [
     Positioned(
-      top: 20,
-      left: 20,
+      top: 150,
+      left: 150,
       child: Container(
-        height: 50,
-        width: 50,
+        height: 100,
+        width: 100,
         color: Colors.greenAccent,
-      ),
-    ),
-    Positioned(
-      top: 80,
-      left: 80,
-      child: Container(
-        height: 50,
-        width: 50,
-        color: Colors.redAccent,
-      ),
-    ),
-    Positioned(
-      top: 140,
-      left: 140,
-      child: Container(
-        height: 50,
-        width: 50,
-        color: Colors.blueAccent,
-      ),
-    ),
+  ),
+  ),
   ];
 
   @override
@@ -52,6 +34,9 @@ class _MyAppState extends State<MyApp> {
           children: list,
         ),
       ),
+
+
+
     );
   }
 }
