@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Offset position = const Offset(100, 150);
+  Offset p = const Offset(100, 150);
 
   @override
   Widget build(BuildContext context) {
@@ -20,25 +20,17 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         body: Stack(
           children: [
-            Positioned(
-              left: position.dx,
-              top: position.dy,
-              child: GestureDetector(
-                onTap: () {
-                  print(MediaQuery.of(context).size);
-                },
-                onPanUpdate: (e) {
-                  setState(() {
-                    position += e.delta;
-                  });
-                },
+            ...List.generate(10, (index) {
+              return Positioned(
+                top: 150,
+                left: 100 + (50.0 * index),
                 child: Container(
-                  height: 100,
-                  width: 100,
+                  height: 50,
+                  width: 40,
                   color: Colors.purple,
                 ),
-              ),
-            ),
+              );
+            }),
           ],
         ),
       ),
