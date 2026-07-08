@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'MemoDB.dart';
 
 class AddScreen extends StatefulWidget {
   const AddScreen({super.key});
@@ -9,24 +8,16 @@ class AddScreen extends StatefulWidget {
 }
 
 class _AddScreenState extends State<AddScreen> {
-  TextEditingController titleCtrl = TextEditingController();
-  TextEditingController contentCtrl = TextEditingController();
-
-  Future<void> saveMemo() async {
-    await DB.insertMemo(titleCtrl.text, contentCtrl.text);
-    Navigator.pop(context, true);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF8BBD0),
+        backgroundColor: Color(0xFFF8BBD0),
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -39,7 +30,7 @@ class _AddScreenState extends State<AddScreen> {
         child: Center(
           child: Container(
             width: 340,
-            padding: const EdgeInsets.all(24),
+            padding: EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.95),
               borderRadius: BorderRadius.circular(24),
@@ -47,7 +38,7 @@ class _AddScreenState extends State<AddScreen> {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
                   blurRadius: 20,
-                  offset: const Offset(0, 10),
+                  offset: Offset(0, 10),
                 ),
               ],
             ),
@@ -55,6 +46,7 @@ class _AddScreenState extends State<AddScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// 헤더
                 Row(
                   children: [
                     Container(
@@ -64,14 +56,14 @@ class _AddScreenState extends State<AddScreen> {
                         color: Colors.blue.shade100,
                         borderRadius: BorderRadius.circular(14),
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.edit_note,
                         color: Colors.blue,
                         size: 26,
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    const Text(
+                    SizedBox(width: 12),
+                    Text(
                       '메모 작성',
                       style: TextStyle(
                         fontSize: 22,
@@ -81,8 +73,9 @@ class _AddScreenState extends State<AddScreen> {
                   ],
                 ),
 
-                const SizedBox(height: 28),
+                SizedBox(height: 28),
 
+                /// 제목
                 Text(
                   '제목',
                   style: TextStyle(
@@ -91,14 +84,13 @@ class _AddScreenState extends State<AddScreen> {
                     color: Colors.grey.shade700,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 TextField(
-                  controller: titleCtrl,
                   decoration: InputDecoration(
                     hintText: '제목을 입력하세요',
                     filled: true,
                     fillColor: Colors.grey.shade100,
-                    contentPadding: const EdgeInsets.symmetric(
+                    contentPadding: EdgeInsets.symmetric(
                       horizontal: 16,
                       vertical: 14,
                     ),
@@ -109,8 +101,8 @@ class _AddScreenState extends State<AddScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 20),
-
+                SizedBox(height: 20),
+                /// 내용
                 Text(
                   '내용',
                   style: TextStyle(
@@ -119,15 +111,14 @@ class _AddScreenState extends State<AddScreen> {
                     color: Colors.grey.shade700,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 TextField(
-                  controller: contentCtrl,
                   maxLines: 6,
                   decoration: InputDecoration(
                     hintText: '내용을 입력하세요',
                     filled: true,
                     fillColor: Colors.grey.shade100,
-                    contentPadding: const EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(16),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(14),
                       borderSide: BorderSide.none,
@@ -135,24 +126,22 @@ class _AddScreenState extends State<AddScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 28),
+                SizedBox(height: 28),
 
-                GestureDetector(
-                  onTap: saveMemo,
-                  child: Container(
-                    height: 56,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      '저장하기',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                /// 저장 버튼
+                Container(
+                  height: 56,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    '저장하기',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

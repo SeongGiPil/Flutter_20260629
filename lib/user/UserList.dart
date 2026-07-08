@@ -47,13 +47,16 @@ class _UserListState extends State<UserList> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                      onPressed: (){
-                        Navigator.push(
+                      onPressed: () async{
+                        bool flg = await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => UserEdit(userId : user["userId"]),
                             )
                         );
+                        if(flg){
+                          _selectUserList();
+                        }
                       },
                       icon: Icon(Icons.edit)
                   ),

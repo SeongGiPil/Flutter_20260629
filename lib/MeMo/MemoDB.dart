@@ -22,42 +22,20 @@ class DB {
     );
   }
 
-  // 메모 저장
-  static Future<void> insertMemo(
-      String title,
-      String content,
-      ) async {
-    final db = await getDatabase();
+// 함수 작성
+// date 넣을 때 'DATE': DateTime.now().toIso8601String(), 이런식
+// ex )
+// await db.insert(
+//   'TBL_MEMO',
+//   {
+//     'title': title,
+//     'content': content,
+//     'date': DateTime.now().toIso8601String(),
+//   },
+// );
+// 2025-12-16
 
-    await db.insert(
-      "TBL_MEMO",
-      {
-        "title": title,
-        "content": content,
-
-      },
-    );
-  }
-
-  // 메모 전체 조회
-  static Future<List<Map<String, dynamic>>> selectMemoList() async {
-    final db = await getDatabase();
-
-    return await db.query(
-      "TBL_MEMO",
-      orderBy: "id DESC",
-    );
-  }
-  static Future<void> deleteMemo(int userId) async{
-    final db = await getDatabase();
-    await db.delete("TBL_Memo", where: "userId = ?", whereArgs: [userId]);
-  }
-
-  static Future<void> updateUser(String name, int age, int userId) async{
-    final db = await getDatabase();
-    await db.update("TBL_USER",
-        {'name' : name, 'age' : age},
-        where: "userId = ?",
-        whereArgs: [userId]);
-  }
+// 꺼내서 쓸때는
+// DateTime date = DateTime.parse(map['DATE']);
+// 이런식으로 변경
 }

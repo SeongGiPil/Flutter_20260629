@@ -53,11 +53,10 @@ class _UserEditState extends State<UserEdit> {
               SizedBox(height: 10,),
               ElevatedButton(
                   onPressed: () async {
-
                     String name = nameCtrl.text;
                     int age = int.tryParse(ageCtrl.text) ?? 0;
                     await DB.updateUser(name, age, widget.userId);
-                    Navigator.pop(context,true);
+                    Navigator.pop(context, true);
                     // nameCtrl.clear();
                     // ageCtrl.clear();
                   },

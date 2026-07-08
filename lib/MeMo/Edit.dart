@@ -8,8 +8,6 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
-  TextEditingController titleCtrl = TextEditingController();
-  TextEditingController contentCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
